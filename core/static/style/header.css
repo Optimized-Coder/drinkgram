@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 3rem;
+    padding: 2rem 6rem;
 }
 
 ul.nav-items {
@@ -13,7 +13,7 @@ ul.nav-items {
 
 .nav-item {
     list-style: none;
-    padding: 1rem 4rem; /* 1rem top/bottom, 3rem left/right */
+    padding: 2rem 4rem; /* 1rem top/bottom, 3rem left/right */
     position: relative; /* Set the parent element to relative positioning */
     margin-right: 1rem 
   }

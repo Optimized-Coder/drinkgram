@@ -59,6 +59,29 @@ def login():
         flash('You are now logged in','success')
         return redirect(url_for('main.index'))
     
+@auth.route('/edit_profile/', methods=['POST'])
+@login_required
+def edit_profile():
+    if request.method == 'POST':
+        f_name = request.form.get('f_name')
+        l_name = request.form.get('l_name')
+        location = request.form.get('location')
+        about_me = request.form.get('about_me')
+        email = request.form.get('email')
+        username = request.form.get('username')
+
+        current_user.first_name = f_name
+        current_user.last_name = l_name
+        current_user.location = location
+        current_user.about_me = about_me
+        current_user.email = email
+        current_user.username = username
+        
+        db.session.commit()
+
+        flash('Your profile has been updated','success')
+        return redirect(url_for('main.profile'))
+    
     
 # GET
 @auth.route('/login/', methods=['GET'])
@@ -74,5 +97,5 @@ def logout():
 
 @auth.route('/edit_profile/', methods=['GET'])
 @login_required
-def edit_profile():
+def edit_profile_get():
     return render_template('edit_profile.html')

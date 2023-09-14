@@ -1,4 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Edit profile</h1>
+    <main class="form-wrapper">
+        <h1>Edit profile</h1>
+        <form method="POST" action="{{ url_for('auth.edit_profile') }}" class="main-form">
+            <input type="text" name="f_name" placeholder="First Name"
+            {% if current_user.first_name %}
+            value="{{ current_user.first_name }}"
+            {% endif %}
+            >
+            <input type="text" name="l_name" placeholder="Last Name"
+            {% if current_user.last_name %}
+            value="{{ current_user.last_name }}"
+            {% endif %}
+            >
+            <input type="text" name="username" placeholder="Username"
+            {% if current_user.username %}
+            value="{{ current_user.username }}"
+            {% endif %}
+            >
+            <input type="email" name="email" placeholder="Email"
+            {% if current_user.email %}
+            value="{{ current_user.email }}"
+            {% endif %}
+            >
+            <input type="text" name="location" placeholder="Your Location"
+            {% if current_user.location %}
+            value="{{ current_user.location }}"
+            {% endif %}
+            >
+            <textarea name="about_me" placeholder="About Me" maxlength="240">{% if current_user.about_me %}{{current_user.about_me}}{% endif %}</textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </main>
 {% endblock %}

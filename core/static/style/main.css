@@ -24,8 +24,8 @@ body {
 /* GLOBALS */
 
 h1 {
-    font-size: 2em;
-    letter-spacing: 0.05rem;
+    font-size: 2.2em;
+    letter-spacing: 0.08rem;
 }
 
 a {
@@ -33,7 +33,7 @@ a {
 }
 
 main.container {
-    padding: 1rem 3rem;
+    padding: 1rem 12rem;
 }
 
 /* flashed messages */
@@ -97,11 +97,16 @@ label {
     font-size: 1.5rem;
 }
 
-input[type="text"], input[type="password"], input[type="email"]{
+input[type="text"], input[type="password"], input[type="email"], textarea{
     width: 50%;
     padding: 1rem 0.5rem;
     font-size: 1.5rem;
-    margin: 1rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+textarea {
+    height: 10rem;
 }
 
 input[type="submit"]{
@@ -139,3 +144,41 @@ input[type="submit"]:hover{
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 30vh;
+    padding-bottom: 1rem;
+    margin: 0 0 1rem 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 40%;
+    height: 100%;
+}
+
+.profile-info *, .profile-img {
+    padding: .5rem;
+}
+
+.profile-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25%;
+    object-position: 50% 10%;
+}
+

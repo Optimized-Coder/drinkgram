@@ -18,3 +18,10 @@ class User(db.Model, UserMixin):
             return False
         else:
             return True
+        
+    @property
+    def get_name(self):
+        if self.first_name is None and self.last_name is None:
+            return 'Unknown User'
+        else:
+            return f'{self.first_name} {self.last_name}'

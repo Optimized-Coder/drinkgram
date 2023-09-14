@@ -1,9 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="container">
-    <h1>
-        {{ current_user.username }}
-    </h1>
+    <div class="profile-header">
+        <div class="profile-img">
+            <img src="{{url_for('static', filename='img/cartoon_eye.png')}}" alt="Profile Picture" class="profile-pic">
+        </div>
+        <div class="profile-info">
+            <h1>
+                {{ current_user.get_name }}
+            </h1>
+            <h3 class="profile-username">
+                @{{ current_user.username }}
+            </h3>
+            <p class="profile-location">
+                {{ current_user.location }}
+            </p>
+            <p class="profile-bio">
+                {{ current_user.about_me }}
+            </p>
+            <a href="{{ url_for('auth.edit_profile') }}">Edit Profile</a>
+        </div>
+    </div>
+    <hr>
     <div class="gallery">
         {% for photo in current_user.photos %}
             <img src="{{photo.url}}" alt="" class="gallery-img">
