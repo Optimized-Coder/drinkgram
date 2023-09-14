@@ -2,7 +2,7 @@ from flask import Blueprint, redirect, url_for, request, render_template
 from ..extensions import db
 from ..models import Photo
 
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 import uuid
 import boto3
@@ -21,10 +21,10 @@ def index():
     return render_template('index.html', current_user=current_user)
 
 # POST
+
 @main.route('/upload/', methods=['GET', 'POST'])
+@login_required
 def upload():
-    # if not current_user.is_authenticated:
-        # return redirect(url_for('auth.login'))
     if request.method == 'POST':
         uploaded_file = request.files['file-to-upload']
         if uploaded_file and allowed_file(uploaded_file.filename):
@@ -51,3 +51,7 @@ def upload():
             db.session.commit()
             return redirect(url_for('main.index')) 
     return render_template('upload.html')
+
+@main.route('/profile/')
+def profile():
+    return render_template('user_profile.html', current_user=current_user)

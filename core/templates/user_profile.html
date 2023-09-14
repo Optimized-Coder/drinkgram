@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container">
+    <h1>
+        {{ current_user.username }}
+    </h1>
+    <div class="gallery">
+        {% for photo in current_user.photos %}
+            <img src="{{photo.url}}" alt="" class="gallery-img">
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

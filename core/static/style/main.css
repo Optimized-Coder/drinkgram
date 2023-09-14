@@ -32,6 +32,10 @@ a {
     color: var(--secondary);
 }
 
+main.container {
+    padding: 1rem 3rem;
+}
+
 /* flashed messages */
 
 .flash {
@@ -53,6 +57,10 @@ a {
 
 .error {
     background-color: rgb(100, 0, 0);
+}
+
+.info {
+    background-color: rgb(212, 138, 0);
 }
 
 main.form-wrapper {
@@ -113,4 +121,21 @@ input[type="submit"]{
 input[type="submit"]:hover{
     background-color: var(--primary);
     color: var(--secondary);
+}
+
+.gallery {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    padding: 1rem 2rem;
+    margin: 2rem 1rem;
+}
+
+.gallery-img {
+    padding: 1rem 2rem;
+    width: calc(25% - 2rem);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }

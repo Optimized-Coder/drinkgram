@@ -3,7 +3,7 @@ from ..extensions import db
 from ..models import User
 from ..functions import validate_email, validate_username, validate_password
 
-from flask_login import login_required, login_user, logout_user
+from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -52,6 +52,10 @@ def login():
             return jsonify({'message': 'Username or password is incorrect'}), 400
         
         login_user(user, remember=True)
+        if not current_user.profile_complete:
+            flash('Please Update your profile','info')
+            return redirect(url_for('auth.edit_profile'))
+        
         flash('You are now logged in','success')
         return redirect(url_for('main.index'))
     
@@ -67,3 +71,8 @@ def logout():
     logout_user()
     flash('You are now logged out','success')
     return redirect(url_for('main.index'))
+
+@auth.route('/edit_profile/', methods=['GET'])
+@login_required
+def edit_profile():
+    return render_template('edit_profile.html')

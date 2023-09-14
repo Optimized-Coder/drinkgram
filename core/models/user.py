@@ -12,3 +12,9 @@ class User(db.Model, UserMixin):
     about_me = db.Column(db.String(140))
     location = db.Column(db.String(140))
 
+    @property
+    def profile_complete(self):
+        if self.first_name is None and self.last_name is None and self.location is None:
+            return False
+        else:
+            return True
