@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="form-wrapper">
+    <h1>Login</h1>
+    <form action="/auth/login/" method="POST" class="main-form">
+        <div class="input-field">
+            <input type="text" name="username" placeholder="Username">
+        </div>
+
+        <div class="input-field">
+            <input type="password" name="password" placeholder="Password">
+        </div>
+
+        <input type="submit" value="Login">
+    </form>
+    <p>
+        If you don't have an account, create one <a href="{{url_for('auth.register')}}">here</a>
+    </p>
+</main>
+
+{% endblock %}

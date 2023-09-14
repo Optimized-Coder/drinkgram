@@ -1,0 +1,30 @@
+<header>
+    <div class="logo">
+        <h1><span><i class="fa-solid fa-martini-glass"></i></span> drinkgram</h1>
+    </div>
+    <nav class="main-nav">
+        <ul class="nav-items">
+            <li class="nav-item">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Browse</a>
+            </li>
+            {% if not current_user.is_authenticated %}
+            <li class="nav-item">
+                <a href="{{ url_for('auth.login_get') }}" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">Register</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a href="/" class="nav-link">Post</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('auth.logout') }}" class="nav-link">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
