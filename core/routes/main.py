@@ -6,6 +6,7 @@ from flask_login import current_user
 
 import uuid
 import boto3
+import os
 
 main = Blueprint('main', __name__)
 
@@ -34,8 +35,8 @@ def upload():
             s3 = boto3.resource(
                 service_name='s3',
                 region_name='eu-west-2',
-                aws_access_key_id='AKIA2YWWXFY6PNM2AXRV',
-                aws_secret_access_key='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'
+                aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+                aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'),
             )
 
             s3.Bucket(bucket_name).\
