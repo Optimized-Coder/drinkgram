@@ -3,6 +3,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 6rem;
+    z-index: 1;
 }
 
 ul.nav-items {
@@ -18,7 +19,7 @@ ul.nav-items {
     margin-right: 1rem 
   }
   
-a.nav-link {
+.nav-link {
 text-decoration: none;
 color: black;
 font-size: 1.5rem;
@@ -36,5 +37,9 @@ transition: all 0.3s;
 
 .nav-item:hover {
 border-bottom: 1px solid var(--secondary);
+}
+
+p span {
+    margin: 0 .5rem;
 }
   

@@ -19,15 +19,21 @@
             </li>
             {% else %}
             <li class="nav-item">
-                <a href="{{ url_for('main.upload') }}" class="nav-link">Upload</a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ url_for('main.profile') }}" class="nav-link">Profile</a>
             </li>
             <li class="nav-item">
                 <a href="{{ url_for('auth.logout') }}" class="nav-link">Logout</a>
             </li>
+            <li class="nav-item">
+                <p class="nav-link" id="upload-bar-toggle">Upload<span><i class="fa-solid fa-arrow-down" id="arrow"></i></span></p>
+            </li>
             {% endif %}
         </ul>
     </nav>
 </header>
+<div class="upload-bar hidden" id="upload-bar">
+    <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file-to-upload">
+        <input type="submit" class="submit-file">
+    </form>
+</div>

@@ -32,7 +32,7 @@ a {
     color: var(--secondary);
 }
 
-main.container {
+.container {
     padding: 1rem 12rem;
 }
 
@@ -92,17 +92,20 @@ form.main-form {
     justify-content: space-around;
 }
 
+
 label {
     display: block;
     font-size: 1.5rem;
 }
 
-input[type="text"], input[type="password"], input[type="email"], textarea{
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+textarea{
     width: 50%;
     padding: 1rem 0.5rem;
     font-size: 1.5rem;
     margin: 2rem;
-    text-align: center;
 }
 
 textarea {
@@ -128,19 +131,60 @@ input[type="submit"]:hover{
     color: var(--secondary);
 }
 
-.gallery {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+.hidden {
+    display: none;
+}
 
-    padding: 1rem 2rem;
-    margin: 2rem 1rem;
+
+.upload-bar {
+    animation: fade-in 0.7s ease-in-out;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 20vh;
+}
+
+/* .upload-bar:hover {
+    background: #eee;
+    border-color: #111;
+  } */
+
+input[type="file"] {
+    cursor: pointer;
+    padding: 2rem;
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    text-align: center;
+}
+
+::-webkit-file-upload-button{
+    cursor: pointer;
+    padding: .5rem 3rem;
+    margin: 0 2rem 0 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    background-color: #927c00;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1rem 0;
 }
 
 .gallery-img {
-    padding: 1rem 2rem;
-    width: calc(25% - 2rem);
+    padding: 0 1rem;
+    margin: 2rem 0;
+    width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
@@ -166,6 +210,23 @@ input[type="submit"]:hover{
     padding: .5rem;
 }
 
+.profile-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-title a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.5s;
+}
+
+.profile-title a:hover {
+    text-decoration: underline;
+}
+
 .profile-img {
     display: flex;
     align-items: center;
@@ -182,3 +243,9 @@ input[type="submit"]:hover{
     object-position: 50% 10%;
 }
 
+
+
+@keyframes fade-in {
+    0% {opacity: 0; transform: translateY(-100px);}
+    100% {opacity: 1; transform: translateY(0)}
+}
