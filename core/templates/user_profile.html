@@ -6,22 +6,29 @@
             <img src="{{url_for('static', filename='img/cartoon_eye.png')}}" alt="Profile Picture" class="profile-pic">
         </div>
         <div class="profile-info">
-            <div class="profile-title">
-                <h1>
-                    {{ current_user.get_name }}
-                </h1>
+            <div class="profile-l">
+                <div class="profile-l-title">
+                    <h1>
+                        {{ current_user.get_name }}
+                    </h1>
+                    <h3 class="profile-username">
+                        @{{ current_user.username }}
+                    </h3>
+                </div>
+                <div class="profile-l-bio">
+                    <p class="profile-bio">
+                        {{ current_user.about_me }}
+                    </p>
+                </div>
+                <div class="profile-l-location">
+                    <p class="profile-location">
+                        {{ current_user.location }}
+                    </p>
+                </div>
+            </div>
+            <div class="profile-r">
                 <a href="{{ url_for('auth.edit_profile') }}">Edit Profile</a>
             </div>
-            <h3 class="profile-username">
-                @{{ current_user.username }}
-            </h3>
-            <p class="profile-bio">
-                {{ current_user.about_me }}
-            </p>
-            <p class="profile-location">
-                {{ current_user.location }}
-            </p>
-            
         </div>
     </div>
     <hr>

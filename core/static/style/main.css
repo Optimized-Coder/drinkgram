@@ -200,9 +200,9 @@ input[type="file"] {
 
 .profile-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
-    width: 40%;
+    width: 80%;
     height: 100%;
 }
 
@@ -210,20 +210,27 @@ input[type="file"] {
     padding: .5rem;
 }
 
-.profile-title {
+.profile-l {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    /* align-items: center; */
     justify-content: space-between;
+    padding: .5rem;
 }
 
-.profile-title a {
+.profile-r {
+    padding: 1.25rem 0;
+}
+
+.profile-r a {
     text-decoration: none;
     cursor: pointer;
     font-size: 1.5rem;
     transition: all 0.5s;
+    padding: .5rem;
 }
 
-.profile-title a:hover {
+.profile-r a:hover {
     text-decoration: underline;
 }
 
