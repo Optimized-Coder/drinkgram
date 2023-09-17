@@ -3,6 +3,7 @@ from flask_login import UserMixin, current_user
 
 from .like import Like
 from .photo import Photo
+from .comment import Comment
 
 followers = db.Table('followers',
             db.Column('follower_id', db.Integer(), db.ForeignKey('user.id')),
@@ -19,7 +20,13 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(30))
     about_me = db.Column(db.String(140))
     location = db.Column(db.String(140))
-    followers = db.relationship('User', backref='followers', lazy=True)
+    followers = db.relationship('User', secondary='followers',
+                               primaryjoin=(followers.c.follower_id == id),
+                               secondaryjoin=(followers.c.followed_id == id),
+                               backref=db.backref('following', lazy='dynamic'),
+                               lazy='dynamic')
+    def __repr__(self):
+        return f'User {self.username}'
 
     @property
     def profile_complete(self):
@@ -47,4 +54,21 @@ class User(db.Model, UserMixin):
             new_like = Like(user_id=current_user.id, photo_id=photo_id)
             db.session.add(new_like)
             db.session.commit()
+    def comment_photo(self, photo_id):
+        new_comment = Comment(user_id=current_user.id, photo_id=photo_id)
+        db.session.add(new_comment)
+        db.session.commit()
 
+    def follow_user(self, user_id):
+        current_user.followers.append(user_id)
+        db.session.commit()
+    
+    def unfollow_user(self, user_id):
+        current_user.followers.remove(user_id)
+        db.session.commit()
+
+    @property
+    def number_of_followers(self):
+        return len(self.followers)
+    
+    
