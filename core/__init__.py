@@ -2,7 +2,7 @@ import os
 from flask import Flask, request
 
 from .extensions import db, migrate
-from .models import User, Photo
+from .models import User, Photo, followers, Like, Comment
 
 from flask_login import LoginManager
 

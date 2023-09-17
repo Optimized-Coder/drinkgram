@@ -1,5 +1,8 @@
 from ..extensions import db
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
+
+from .like import Like
+from .photo import Photo
 
 followers = db.Table('followers',
             db.Column('follower_id', db.Integer(), db.ForeignKey('user.id')),
@@ -32,3 +35,16 @@ class User(db.Model, UserMixin):
         else:
             return f'{self.first_name} {self.last_name}'
         
+    def like_photo(self, photo_id):
+        photo = Photo.query.filter_by(id=photo_id).first()
+        existing_like = Like.query.filter_by(user_id=current_user.id, photo_id=photo_id).first()
+        if existing_like:
+        # User already liked the photo, so unlike it
+            db.session.delete(existing_like)
+            db.session.commit()
+        
+        else:
+            new_like = Like(user_id=current_user.id, photo_id=photo_id)
+            db.session.add(new_like)
+            db.session.commit()
+
