@@ -1,6 +1,11 @@
 from ..extensions import db
 from flask_login import UserMixin
 
+followers = db.Table('followers',
+            db.Column('follower_id', db.Integer(), db.ForeignKey('user.id')),
+            db.Column('followed_id', db.Integer(), db.ForeignKey('user.id'))
+            )
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -11,6 +16,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(30))
     about_me = db.Column(db.String(140))
     location = db.Column(db.String(140))
+    followers = db.relationship('User', backref='followers', lazy=True)
 
     @property
     def profile_complete(self):
@@ -25,3 +31,4 @@ class User(db.Model, UserMixin):
             return 'Unknown User'
         else:
             return f'{self.first_name} {self.last_name}'
+        

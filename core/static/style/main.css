@@ -138,6 +138,9 @@ input[type="submit"]:hover{
 
 .upload-bar {
     animation: fade-in 0.7s ease-in-out;
+    border-bottom: 2px solid var(--secondary);
+    border-top: 2px solid var(--secondary);
+    padding: 0 0 1rem 0;
 }
 
 .upload-form {
@@ -216,10 +219,16 @@ input[type="file"] {
     /* align-items: center; */
     justify-content: space-between;
     padding: .5rem;
+    width: 50%;
+}
+
+.profile-username {
+    opacity: 0.7;
 }
 
 .profile-r {
     padding: 1.25rem 0;
+    margin: 1rem 0 0;
 }
 
 .profile-r a {
@@ -227,11 +236,16 @@ input[type="file"] {
     cursor: pointer;
     font-size: 1.5rem;
     transition: all 0.5s;
-    padding: .5rem;
+    padding: .5rem 1rem;
+    margin: 1rem 0;
+
+    border: 2px solid #927c00;
 }
 
 .profile-r a:hover {
     text-decoration: underline;
+    background-color: #927c00;
+    color: var(--primary);
 }
 
 .profile-img {
