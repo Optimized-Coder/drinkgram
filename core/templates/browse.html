@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container">
+    {% for photo in photos %}
+        <div class="photo-card">
+            <h2>{{ user.query.get(photo.user_id).username }}</h2>
+            <img src="{{photo.url}}" alt="">
+            <button class="like-btn" onclick="{{ current_user.like_photo(photo.id) }}">
+                <i class="fas fa-heart"></i>
+            </button>
+            <p>Likes: {{ photo.get_number_of_likes }}</p>
+        </div>
+    {% endfor %}
+</main>
+{% endblock %}

@@ -8,7 +8,7 @@
                 <a href="/" class="nav-link">Home</a>
             </li> -->
             <li class="nav-item">
-                <a href="/" class="nav-link">Browse</a>
+                <a href="{{ url_for('main.browse') }}" class="nav-link">Browse</a>
             </li>
             {% if not current_user.is_authenticated %}
             <li class="nav-item">

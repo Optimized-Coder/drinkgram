@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, request, render_template
 from ..extensions import db
-from ..models import Photo
+from ..models import Photo, User
 
 from flask_login import current_user, login_required
 
@@ -55,3 +55,15 @@ def upload():
 @main.route('/profile/')
 def profile():
     return render_template('user_profile.html', current_user=current_user)
+
+@main.route('/browse/', methods=['GET'])
+def browse():
+
+    context = {
+        'photos': Photo.query.all(),
+        'user': User
+    }
+
+    return render_template('browse.html',
+                        **context
+                           )

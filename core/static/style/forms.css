@@ -1,0 +1,114 @@
+main.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 100%;
+    min-height: 80vh;
+}
+
+form.main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    /* min-height: 60vh; */
+}
+
+.input-field {
+    padding-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+label {
+    display: block;
+    font-size: 1.5rem;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+textarea{
+    width: 50%;
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+
+textarea {
+    height: 10rem;
+}
+
+input[type="submit"]{
+    width: 50%;
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+
+    background-color: var(--secondary);
+    color: var(--primary);
+
+    cursor: pointer;
+
+    transition: all 0.5s;
+}
+
+input[type="submit"]:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.hidden {
+    display: none;
+}
+
+
+.upload-bar {
+    animation: fade-in 0.7s ease-in-out;
+    border-bottom: 2px solid var(--secondary);
+    border-top: 2px solid var(--secondary);
+    padding: 0 0 1rem 0;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 20vh;
+}
+
+/* .upload-bar:hover {
+    background: #eee;
+    border-color: #111;
+  } */
+
+input[type="file"] {
+    cursor: pointer;
+    padding: 2rem;
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    text-align: center;
+}
+
+::-webkit-file-upload-button{
+    cursor: pointer;
+    padding: .5rem 3rem;
+    margin: 0 2rem 0 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    background-color: #927c00;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}

@@ -16,9 +16,12 @@ class Photo(db.Model):
 
     @property
     def get_number_of_likes(self):
-        return len(self.likes)
+        return self.likes.count()
     
     @property
     def get_comments(self):
+        if self.comments.count() == 0:
+            return 'This photo does not have any comments yet'
+        
         return Comment.query.filter_by(photo_id=self.id).all()
     
